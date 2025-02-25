@@ -17,6 +17,35 @@ Additionally, `fj` can read from STDIN:
 kubectl -n kube-system get pods -o json | fj - | rg podIP
 ```
 
+## Example
+
+```
+$ echo '{
+    "null": null,
+    "bool": true,
+    "number": 42,
+    "string": "Hello, world!",
+    "array": [
+        1,
+        2,
+        3
+    ],
+    "object": {
+        "foo": "bar",
+        "answer": 42
+    }
+}' | fj -
+$.null: null
+$.bool: true
+$.number: 42
+$.string: "Hello, world!"
+$.array[0]: 1
+$.array[1]: 2
+$.array[2]: 3
+$.object.foo: "bar"
+$.object.answer: 42
+```
+
 ## Install
 
 ```sh
